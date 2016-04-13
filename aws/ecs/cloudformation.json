@@ -745,7 +745,7 @@
             ],
             "Essential": true,
             "Name": "hit-counter",
-            "Image": "dstroppa/hit-counter",
+            "Image": "chavisb/hit-counter",
             "Command": [
               "python",
               "app.py"
