@@ -680,6 +680,7 @@
           { "Ref" : "PubSubnetAz1" },
           { "Ref" : "PubSubnetAz2" }
         ],
+        "ConnectionSettings": { "IdleTimeout" : 2},
         "Listeners" : [ {
           "LoadBalancerPort" : "80",
           "InstancePort" : "80",
@@ -745,7 +746,7 @@
             ],
             "Essential": true,
             "Name": "hit-counter",
-            "Image": "chavisb/hit-counter",
+            "Image": "chavisb/s3-static",
             "Command": [
               "python",
               "app.py"
