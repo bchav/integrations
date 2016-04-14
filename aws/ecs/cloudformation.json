@@ -700,6 +700,33 @@
         ]
       }
     },
+    "ShippableElasticLoadBalancer" : {
+      "Type" : "AWS::ElasticLoadBalancing::LoadBalancer",
+      "Properties" : {
+        "Subnets" : [
+          { "Ref" : "PubSubnetAz1" },
+          { "Ref" : "PubSubnetAz2" }
+        ],
+        "ConnectionSettings": { "IdleTimeout" : 2},
+        "Listeners" : [ {
+          "LoadBalancerPort" : "80",
+          "InstancePort" : "8080",
+          "Protocol" : "HTTP"
+        } ],
+        "HealthCheck" : {
+          "Target" : "TCP:80",
+          "HealthyThreshold" : "2",
+          "UnhealthyThreshold" : "10",
+          "Interval" : "30",
+          "Timeout" : "5"
+        },
+        "SecurityGroups": [
+          {
+            "Ref": "EcsSecurityGroup"
+          }
+        ]
+      }
+    },
     "EcsCluster": {
       "Type": "AWS::ECS::Cluster"
     },
@@ -746,7 +773,7 @@
             ],
             "Essential": true,
             "Name": "hit-counter",
-            "Image": "chavisb/s3-static",
+            "Image": "chavisb/hit-counter",
             "Command": [
               "python",
               "app.py"
