@@ -773,7 +773,7 @@
             ],
             "Essential": true,
             "Name": "hit-counter",
-            "Image": "chavisb/hit-counter",
+            "Image": "chavisb/hit-counter-gunicorn",
             "Command": [
               "python",
               "app.py"
