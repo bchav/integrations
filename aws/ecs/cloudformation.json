@@ -775,8 +775,10 @@
             "Name": "hit-counter",
             "Image": "chavisb/hit-counter-gunicorn",
             "Command": [
-              "python",
-              "app.py"
+              "gunicorn",
+              "app:app",
+	      "-b",
+              "0.0.0.0:5000"
             ],
             "Cpu": 10,
             "Memory": 300
